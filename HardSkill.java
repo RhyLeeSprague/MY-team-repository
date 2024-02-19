@@ -1,6 +1,6 @@
 public class HardSkill {
-    String title; // class variables
-    String level;
+    private String title; // class variables
+    private String level;
 
     public HardSkill() { // default constructor
     }
