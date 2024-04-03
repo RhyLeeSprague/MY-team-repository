@@ -9,7 +9,9 @@ public class TempArrays {
     //Skills are multidimensonal arrays to contain the skill then the level of said skill.
     String[][] softSkills = new String[250][250];
     String[][] hardSkills = new String[250][250];
-    String[][][] emergencyContact = new String[250][250][250];
+    //Emergency contact goes Name, Number
+    String[][] emergencyContact = new String[250][250];
+    //String about what the single/hypenated gift is.
     String[] gifts = new String[250];
     
     private String firstName;
