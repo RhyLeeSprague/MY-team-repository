@@ -32,7 +32,11 @@ public class Test {
         person1.setSkills(skill1);
         person1.setEvaluations(eval1);
 
-        System.out.println(person1);
+        // System.out.println(person1);
+
+        System.out.println(person1.getSkills());
+        System.out.println(person1.getJobHistory());
+        System.out.println(person1.getEvaluations());
 
     }
 }

@@ -23,36 +23,72 @@ public class Demographics {
         this.firstAndLastName = firstAndLastName;
     }
 
+    String getFirstAndLastName() {
+        return this.firstAndLastName;
+    }
+
     void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    String getEmailAddress() {
+        return this.emailAddress;
     }
 
     void setHomeAddress(String homeAddress) {
         this.homeAddress = homeAddress;
     }
 
+    String getHomeAddress() {
+        return this.homeAddress;
+    }
+
     void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    String getPhoneNumber() {
+        return this.phoneNumber;
     }
 
     void setEmergencyContactNum(String emergencyContactNum) {
         this.emergencyContactNum = emergencyContactNum;
     }
 
+    String getEmergencyContactNum() {
+        return emergencyContactNum;
+    }
+
     void setEmergencyContactName(String emergencyContactName) {
         this.emergencyContactName = emergencyContactName;
+    }
+
+    String getEmergencyContactName() {
+        return this.emergencyContactName;
     }
 
     public void setJobHistory(jobHistory job) {
         this.jobHistories[0] = job;
     }
 
+    jobHistory[] getJobHistory() {
+        return this.jobHistories;
+    }
+
     public void setSkills(Skills skills) {
         this.skills[0] = skills;
     }
 
+    Skills[] getSkills() {
+        return this.skills;
+    }
+
     public void setEvaluations(Evaluations eval) {
         this.evaluations[0] = eval;
+    }
+
+    Evaluations[] getEvaluations() {
+        return this.evaluations;
     }
 
     @Override
