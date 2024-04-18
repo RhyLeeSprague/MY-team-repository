@@ -6,11 +6,24 @@ public abstract class Person {
     private boolean loggedIn, loggedOut; 
     private LocalDateTime clockedIn, clockedOut;
     
+    //Goes through the arrays for emails and passwords looking for an match
+    //If gets a match logIn equals successful if fails to find a match then invalid login message pops up
     public void logIn(emailAddress, password){
-        //Goes through the arrays for emails and passwords looking for an match
-        //If gets a match logIn equals successful if fails to find a match then invalid login message pops up
-
-    }
+        boolean found = false;
+        for(Employee employee : Demographics){
+            if(employee.getPassword().equals(password) 
+            && employee.getEmailAddress().equals(emailAddress)){
+                found = true;
+                break;
+            }
+        }
+        if(!found){
+            System.out.println("Log in info is incorrect. Please try again slower.");
+        }
+        else{
+            System.out.println("You are now successfully logged in.");
+        }
+    }   
 
     public void logOut(){
         //If not logged in at all just tells the user they can't log out until logged in
