@@ -4,6 +4,9 @@ import java.io.PrintWriter;
 import java.io.FileInputStream;
 
 public class DataValidation {
+    boolean fileOpen = false;
+    boolean saved = true;
+
     public static Boolean validateEmail(String emailAddress) {
         //Email address standards from the RFC 5322
         String regexPattern = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
@@ -20,7 +23,7 @@ public class DataValidation {
 
     }
     //"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$"
-//"^(?=.*[a-z])(?=.*[A-Z])(?=.*\b)(?=.*[@$!%*?&])[A-Za-z\b@$!%*?&]{8,10}$"
+    //"^(?=.*[a-z])(?=.*[A-Z])(?=.*\b)(?=.*[@$!%*?&])[A-Za-z\b@$!%*?&]{8,10}$"
     public static boolean validatePassword(String password){
         //Password requirements Minimum eight and maximum 10 characters, 
         //at least one uppercase letter, one lowercase letter, one number and one special character:
@@ -51,22 +54,31 @@ public class DataValidation {
     public void saveChanges(Employee employee){
         //Needs to create a way to take info that is being inputted and save it.
         //Such as passwords/demographic info
+        if (employee.loggedIn() && fileOpen && !saved){
+            PrintWriter pw = new PrintWriter("employees.txt");
+            for(int i = 0; i < employee.size(); i++){
+                employee.get(i).writeToFile(pw);
+            }
+            pw.close();
+            saved = true;
+        }
+        else if(saved){
+            System.out.println("File is already saved.");
+        }
+        else if(!employee.loggedIn()){
+            System.out.println("You must be logged in before you can make/save changes.");
+        }
     }
 
-    public void accessCheck(){
+    public void accessCheck(accessLevel){
         //Checks the employee's access level when trying to click something that requires higher clearance
-        if(accessLevel == a){
-            
+        if(accessLevel != 'a'){
+            System.out.println("You do not have the access level required to do this action.");
+        }
+        else{
         }
 
     }
-
-    public void validLogIn(){
-        //Checks the arrays to determine whether or not the email and password when logging in belongs to someone
-        //In the database.
-        if()
-    }   
-
 
 }
 /*
@@ -234,4 +246,27 @@ private boolean validNumber(String stringNumber) {
         return pass;
     }
  
+
+
+
+    int i = 0;
+            boolean found = false;
+            while(i < Demographics.size() && !found){
+                if(Demographics.get(i).getEmailAddress().equals(emailAddress)
+                    && Demographics.get(i).getPassword().equals(password)){
+                    
+                    employee.loggedIn = true;
+
+                    found = true;
+                }
+                i++;
+
+            }
+            if(!found){
+                System.out.println("Invalid creditinals. Please try slower.");
+            }
+        }
+        else{
+            System.out.println("You are already logged in please logout before trying again.");
+        }
  */
