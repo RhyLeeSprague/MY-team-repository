@@ -1,6 +1,7 @@
-package endProject;
+package HRDatabaseofficial;
 
 import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Demographics {
     String firstAndLastName;
@@ -9,86 +10,76 @@ public class Demographics {
     String phoneNumber;
     String emergencyContactNum;
     String emergencyContactName;
-    jobHistory[] jobHistories;
-    Skills[] skills;
-    Evaluations[] evaluations;
+    String[] jobHistories = new String[5];
+    String[] skillSet = new String[5];
+    String[] evaluations = new String[5];
 
-    public Demographics() {
-        jobHistories = new jobHistory[5];
-        skills = new Skills[5];
-        evaluations = new Evaluations[5];
+    ArrayList list = new ArrayList() {}; //temp
+
+    public Demographics(){}
+
+    public Demographics(String name, String email, String address, String number, 
+    String ecnum, String ecname, Evaluations eval, jobHistory jobHist, Skills skills) {
+        firstAndLastName = name;
+        emailAddress = email;
+        homeAddress = address;
+        phoneNumber = number;
+        emergencyContactNum = ecnum;
+        emergencyContactName = ecname;
+
     }
 
-    void setFirstAndLastName(String firstAndLastName) {
+    public ArrayList getList()
+    {
+        return list;
+    }
+
+    public void setFirstAndLastName(String firstAndLastName) {
         this.firstAndLastName = firstAndLastName;
     }
 
-    String getFirstAndLastName() {
+    public String getFirstAndLastName() {
         return this.firstAndLastName;
     }
 
-    void setEmailAddress(String emailAddress) {
+    public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
 
-    String getEmailAddress() {
+    public String getEmailAddress() {
         return this.emailAddress;
     }
 
-    void setHomeAddress(String homeAddress) {
+    public void setHomeAddress(String homeAddress) {
         this.homeAddress = homeAddress;
     }
 
-    String getHomeAddress() {
+    public String getHomeAddress() {
         return this.homeAddress;
     }
 
-    void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    String getPhoneNumber() {
+    public String getPhoneNumber() {
         return this.phoneNumber;
     }
 
-    void setEmergencyContactNum(String emergencyContactNum) {
+    public void setEmergencyContactNum(String emergencyContactNum) {
         this.emergencyContactNum = emergencyContactNum;
     }
 
-    String getEmergencyContactNum() {
+    public String getEmergencyContactNum() {
         return emergencyContactNum;
     }
 
-    void setEmergencyContactName(String emergencyContactName) {
+    public void setEmergencyContactName(String emergencyContactName) {
         this.emergencyContactName = emergencyContactName;
     }
 
-    String getEmergencyContactName() {
+    public String getEmergencyContactName() {
         return this.emergencyContactName;
-    }
-
-    public void setJobHistory(jobHistory job) {
-        this.jobHistories[0] = job;
-    }
-
-    jobHistory[] getJobHistory() {
-        return this.jobHistories;
-    }
-
-    public void setSkills(Skills skills) {
-        this.skills[0] = skills;
-    }
-
-    Skills[] getSkills() {
-        return this.skills;
-    }
-
-    public void setEvaluations(Evaluations eval) {
-        this.evaluations[0] = eval;
-    }
-
-    Evaluations[] getEvaluations() {
-        return this.evaluations;
     }
 
     @Override
@@ -100,7 +91,7 @@ public class Demographics {
         sb.append("Emergency Contact Number: ").append(emergencyContactNum).append("\n");
         sb.append("Emergency Contact Name: ").append(emergencyContactName).append("\n");
 
-        // Print job history
+        // Job History Object
         sb.append("\nJob History:\n");
         for (jobHistory job : jobHistories) {
             if (job != null) {
@@ -112,7 +103,7 @@ public class Demographics {
             }
         }
 
-        // Print skills
+        // Skills Object
         sb.append("\nSkills:\n");
         for (Skills skill : skills) {
             if (skill != null) {
@@ -123,7 +114,7 @@ public class Demographics {
             }
         }
 
-        // Print evaluations
+        // Evaluations Object
         sb.append("\nEvaluations:\n");
         for (Evaluations eval : evaluations) {
             if (eval != null) {
@@ -136,27 +127,79 @@ public class Demographics {
 
         return sb.toString();
     }
+
+
+    public void makeAPerson()
+    {
+        
+    /* TEST */
+    Evaluations persone1 = new Evaluations("Guy Fieri", "1/2/03",
+     "Unsatisfied", "fire soon");
+
+     String[] teammates = new String[]{"oneguy", "twoguy"};
+    jobHistory personj1 = new jobHistory("ABC Comp", "Gordon Ramsay", teammates,
+     "2 years", "role");
+
+     String[] skillList = new String[] {"java", "python"};
+     String[] softSkills = new String[] {"Friendly", "Cool"};
+     String[] giftsTalents = new String[] {"Creative", "megamind"};
+    Skills persons1 = new Skills(skillList, "Advanced", softSkills, giftsTalents);
+
+    Demographics person1 = new Demographics("Joe Schmoe", "JoeSchmoe@g.com", "123 Apple Dr", 
+    "000-000-0000", "001-000-0011", "Jane Schmoe", persone1, personj1, persons1);
+
 }
 
 class jobHistory {
     String companyName;
     String supervisor;
-    String[] teammates;
+    String[] teammateList;
     String lengthOfJob;
-    String[] teamRoles;
+    String teamRole;
 
+    public jobHistory(){}
+
+    public jobHistory(String name, String superv, String[] teammates, String jobLength, String role)
+    {
+        companyName = name;
+        supervisor = superv;
+        teammateList = teammates;
+        lengthOfJob = jobLength;
+        teamRole = role;
+    }
 }
 
 class Skills {
     String[] criticalSkills;
-    String[] criticalSkillLevel;
+    String criticalSkillLevel;
     String[] softSkills;
     String[] giftsTalents;
+
+    public Skills(){}
+
+    public Skills(String[] skills, String skillLevel, String[] softSk, String[] talents)
+    {
+        criticalSkills = skills;
+        criticalSkillLevel = skillLevel;
+        softSkills = softSk;
+        giftsTalents = talents;
+    }
 }
 
 class Evaluations {
     String evalSupervisor;
     String dateOfEval;
-    String[] employeeSatisfaction;
-    String[] extraNotes;
+    String employeeSatisfaction;
+    String extraNotes;
+
+    public Evaluations(){}
+
+    public Evaluations(String supervisor, String date, String satisfaction, String notes)
+    {
+        evalSupervisor = supervisor;
+        dateOfEval = date;
+        employeeSatisfaction = satisfaction;
+        extraNotes = notes;
+    }
 }
+
