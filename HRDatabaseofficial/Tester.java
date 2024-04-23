@@ -1,6 +1,6 @@
-package endProject;
+package HRDatabaseofficial;
 
-public class Test {
+public class Tester {
     public static void main(String[] args) {
         Demographics person1 = new Demographics();
         person1.firstAndLastName = "Joe Schmoe";
@@ -32,11 +32,6 @@ public class Test {
         person1.setSkills(skill1);
         person1.setEvaluations(eval1);
 
-        // System.out.println(person1);
-
-        System.out.println(person1.getSkills());
-        System.out.println(person1.getJobHistory());
-        System.out.println(person1.getEvaluations());
-
+        
     }
 }

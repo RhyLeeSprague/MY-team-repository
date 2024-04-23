@@ -1,3 +1,5 @@
+package TempArrays;
+
 import java.lang.Object;
 import java.time.LocalDateTime;
 import java.time.Duration;
@@ -8,7 +10,7 @@ public abstract class Person {
     
     //Goes through the arrays for emails and passwords looking for an match
     //If gets a match logIn equals successful if fails to find a match then invalid login message pops up
-    public void logIn(emailAddress, password){
+    public void logIn( String emailAddress, String password){
         boolean found = false;
         for(Employee employee : Demographics){
             if(employee.getPassword().equals(password) 
