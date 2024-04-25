@@ -82,6 +82,31 @@ public class Demographics {
         return this.emergencyContactName;
     }
 
+<<<<<<< HEAD:endProject/Demographics.java
+    public void setJobHistory(jobHistory job) {
+        this.jobHistories[0] = job;
+    }
+
+    jobHistory[] getJobHistory() {
+        return this.jobHistories;
+    }
+
+    public void setSkills(Skills skills) {
+        this.skills[0] = skills;
+    }
+
+    Skills[] getSkills() {
+        return this.skills;
+    }
+
+    public void setEvaluations(Evaluations eval) {
+        this.evaluations[0] = eval;
+    }
+
+    Evaluations[] getEvaluations() {
+        return this.evaluations;
+    }
+=======
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -147,6 +172,7 @@ public class Demographics {
 
     Demographics person1 = new Demographics("Joe Schmoe", "JoeSchmoe@g.com", "123 Apple Dr", 
     "000-000-0000", "001-000-0011", "Jane Schmoe", persone1, personj1, persons1);
+>>>>>>> 9b8571f56003021ae7dd72aabeffdf11bc7ab9ed:HRDatabaseofficial/Demographics.java
 
 }
 
@@ -155,6 +181,9 @@ class jobHistory {
     String supervisor;
     String[] teammateList;
     String lengthOfJob;
+<<<<<<< HEAD:endProject/Demographics.java
+    String[] teamRoles;
+=======
     String teamRole;
 
     public jobHistory(){}
@@ -167,6 +196,7 @@ class jobHistory {
         lengthOfJob = jobLength;
         teamRole = role;
     }
+>>>>>>> 9b8571f56003021ae7dd72aabeffdf11bc7ab9ed:HRDatabaseofficial/Demographics.java
 }
 
 class Skills {
