@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:HRDatabaseofficial/Person.java
 package endProject;
+========
+package TempArrays;
+>>>>>>>> 9b8571f56003021ae7dd72aabeffdf11bc7ab9ed:TempArrays/Person.java
 
 import java.lang.Object;
 import java.time.LocalDateTime;
@@ -7,11 +11,18 @@ import java.time.Duration;
 public abstract class Person {
     private boolean loggedIn, loggedOut;
     private LocalDateTime clockedIn, clockedOut;
+<<<<<<<< HEAD:HRDatabaseofficial/Person.java
 
     // Goes through the arrays for emails and passwords looking for an match
     // If gets a match logIn equals successful if fails to find a match then invalid
     // login message pops up
     public void logIn(emailAddress, password){
+========
+    
+    //Goes through the arrays for emails and passwords looking for an match
+    //If gets a match logIn equals successful if fails to find a match then invalid login message pops up
+    public void logIn( String emailAddress, String password){
+>>>>>>>> 9b8571f56003021ae7dd72aabeffdf11bc7ab9ed:TempArrays/Person.java
         boolean found = false;
         for(Employee employee : Demographics){
             if(employee.getPassword().equals(password) 

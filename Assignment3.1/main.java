@@ -1,3 +1,5 @@
+import TempArrays.Person;
+
 public class main{
 public static void main(String[] args) {
     //Creates new instances of job person and hardskill classes.

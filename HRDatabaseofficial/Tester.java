@@ -1,9 +1,13 @@
-package endProject;
+package HRDatabaseofficial;
 
+<<<<<<< HEAD:endProject/Test.java
 import java.util.ArrayList;
 import java.util.List;
 
 public class Test {
+=======
+public class Tester {
+>>>>>>> 9b8571f56003021ae7dd72aabeffdf11bc7ab9ed:HRDatabaseofficial/Tester.java
     public static void main(String[] args) {
 
         List<Demographics> employeeList = new ArrayList<>();
@@ -38,6 +42,7 @@ public class Test {
         person1.setSkills(skill1);
         person1.setEvaluations(eval1);
 
+<<<<<<< HEAD:endProject/Test.java
         // stores instance of demographics to arraylist employeelist
 
         employeeList.add(person1);
@@ -51,6 +56,9 @@ public class Test {
         // shows that employeeList stores every instance of demographics
 
         System.out.println(employeeList.toString());
+=======
+        
+>>>>>>> 9b8571f56003021ae7dd72aabeffdf11bc7ab9ed:HRDatabaseofficial/Tester.java
     }
 }
 
