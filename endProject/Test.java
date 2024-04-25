@@ -1,7 +1,13 @@
 package endProject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Test {
     public static void main(String[] args) {
+
+        List<Demographics> employeeList = new ArrayList<>();
+
         Demographics person1 = new Demographics();
         person1.firstAndLastName = "Joe Schmoe";
         person1.emailAddress = "JoeSchmoe@gmail.com";
@@ -32,11 +38,67 @@ public class Test {
         person1.setSkills(skill1);
         person1.setEvaluations(eval1);
 
-        // System.out.println(person1);
+        // stores instance of demographics to arraylist employeelist
 
-        System.out.println(person1.getSkills());
-        System.out.println(person1.getJobHistory());
-        System.out.println(person1.getEvaluations());
+        employeeList.add(person1);
 
+        // Shows how to call the arrays inside an instance of demographics
+
+        System.out.println(person1.getEvaluations()[0].evalSupervisor);
+        System.out.println(person1.getJobHistory()[0].companyName);
+        System.out.println(person1.getSkills()[0].criticalSkillLevel[0]);
+
+        // shows that employeeList stores every instance of demographics
+
+        System.out.println(employeeList.toString());
     }
 }
+
+/*
+ * 
+ * This code below shows how to use a button to create a new instance of
+ * demographics, which creates a new employee
+ * This doesn't include any code to add information to the variables
+ * 
+ * addButton.addActionListener(new ActionListener() {
+ * 
+ * @Override
+ * public void actionPerformed(ActionEvent e) {
+ * // Create a new instance of Demographics
+ * Demographics newEmployee = new Demographics();
+ * // Add the new instance to the employeeList
+ * employeeList.add(newEmployee);
+ * 
+ * // Optionally, you can do something with the new employee,
+ * // such as displaying it in a dialog or updating a UI component.
+ * // For example:
+ * JOptionPane.showMessageDialog(TestGUI.this, "New employee added!");
+ * }
+ * });
+ * 
+ * This code below creates an instance of Skills and attaches it to whatever
+ * instance of Demographics is passed
+ * The individual variables will need to be changed to whatever user input is
+ * 
+ * private static void attachNewSkills(Demographics person) {
+ * // Create a new instance of Skills
+ * Skills newSkills = new Skills();
+ * newSkills.criticalSkills = new String[]{"Java", "Python"};
+ * newSkills.criticalSkillLevel = new String[]{"Intermediate", "Advanced"};
+ * newSkills.softSkills = new String[]{"Communication", "Teamwork"};
+ * newSkills.giftsTalents = new String[]{"Problem-solving", "Creativity"};
+ * 
+ * // Set the new instance of Skills to the provided Demographics object
+ * person.setSkills(newSkills);
+ * }
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */

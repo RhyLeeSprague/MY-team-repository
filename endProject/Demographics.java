@@ -91,51 +91,6 @@ public class Demographics {
         return this.evaluations;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("First and Last Name: ").append(firstAndLastName).append("\n");
-        sb.append("Email Address: ").append(emailAddress).append("\n");
-        sb.append("Home Address: ").append(homeAddress).append("\n");
-        sb.append("Emergency Contact Number: ").append(emergencyContactNum).append("\n");
-        sb.append("Emergency Contact Name: ").append(emergencyContactName).append("\n");
-
-        // Print job history
-        sb.append("\nJob History:\n");
-        for (jobHistory job : jobHistories) {
-            if (job != null) {
-                sb.append("Company Name: ").append(job.companyName).append("\n");
-                sb.append("Supervisor: ").append(job.supervisor).append("\n");
-                sb.append("Teammates: ").append(Arrays.toString(job.teammates)).append("\n");
-                sb.append("Length of Job: ").append(job.lengthOfJob).append("\n");
-                sb.append("Team Roles: ").append(Arrays.toString(job.teamRoles)).append("\n");
-            }
-        }
-
-        // Print skills
-        sb.append("\nSkills:\n");
-        for (Skills skill : skills) {
-            if (skill != null) {
-                sb.append("Critical Skills: ").append(Arrays.toString(skill.criticalSkills)).append("\n");
-                sb.append("Critical Skill Levels: ").append(Arrays.toString(skill.criticalSkillLevel)).append("\n");
-                sb.append("Soft Skills: ").append(Arrays.toString(skill.softSkills)).append("\n");
-                sb.append("Gifts and Talents: ").append(Arrays.toString(skill.giftsTalents)).append("\n");
-            }
-        }
-
-        // Print evaluations
-        sb.append("\nEvaluations:\n");
-        for (Evaluations eval : evaluations) {
-            if (eval != null) {
-                sb.append("Evaluation Supervisor: ").append(eval.evalSupervisor).append("\n");
-                sb.append("Date of Evaluation: ").append(eval.dateOfEval).append("\n");
-                sb.append("Employee Satisfaction: ").append(Arrays.toString(eval.employeeSatisfaction)).append("\n");
-                sb.append("Extra Notes: ").append(Arrays.toString(eval.extraNotes)).append("\n");
-            }
-        }
-
-        return sb.toString();
-    }
 }
 
 class jobHistory {
@@ -144,7 +99,6 @@ class jobHistory {
     String[] teammates;
     String lengthOfJob;
     String[] teamRoles;
-
 }
 
 class Skills {
