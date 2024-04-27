@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+//To validate all forms of login and sign up data along with sensitive info
 public class DataValidation {
     boolean fileOpen = false;
     boolean saved = true;

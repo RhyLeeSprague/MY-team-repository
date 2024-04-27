@@ -3,6 +3,7 @@ import java.time.LocalDateTime;
 import java.time.Duration;
 import java.io.IOException;
 
+//Demographics/employees should be extended by person
 public abstract class Person {
     private boolean loggedIn, loggedOut; 
     private LocalDateTime clockedIn, clockedOut;
