@@ -1,6 +1,7 @@
 import java.lang.Object;
 import java.time.LocalDateTime;
 import java.time.Duration;
+import java.io.IOException;
 
 public abstract class Person {
     private boolean loggedIn, loggedOut; 
@@ -18,27 +19,26 @@ public abstract class Person {
             }
         }
         if(!found){
-            System.out.println("Log in info is incorrect. Please try again slower.");
+            throw new RuntimeException("Log in info is incorrect. Please try again slower.");
         }
         else{
-            System.out.println("You are now successfully logged in.");
+            throw new RuntimeException("You are now successfully logged in.");
         }
     }   
 
     public void logOut(){
         //If not logged in at all just tells the user they can't log out until logged in
         if(loggedIn != true){
-            System.out.println("You have to be logged in before you can log out");
+            throw new RuntimeException("You have to be logged in before you can log out.");
         } 
         else if(changesSaved != true){
             //Checks to see if changes were saved.
-            
-            System.out.println("Please save changes before logging out.");
+            throw new RuntimeException("Please save changes before logging out.");
             }
         else{
-            //If everything is good simply sets loggedIn to false and prints logged out message
+            //If everything is good simply sets loggedIn to false and throws logged out message
             loggedIn = false;
-            System.out.println("You are logged out.");
+            throw new RuntimeException("You are logged out.");
         }
         
     }
