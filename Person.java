@@ -20,11 +20,9 @@ public abstract class Person {
         }
         if(!found){
             throw new RuntimeException("Log in info is incorrect. Please try again slower.");
-            //System.out.println("Log in info is incorrect. Please try again slower.");
         }
         else{
             throw new RuntimeException("You are now successfully logged in.");
-            //System.out.println("You are now successfully logged in.");
         }
     }   
 
@@ -32,18 +30,15 @@ public abstract class Person {
         //If not logged in at all just tells the user they can't log out until logged in
         if(loggedIn != true){
             throw new RuntimeException("You have to be logged in before you can log out.");
-            //System.out.println("You have to be logged in before you can log out");
         } 
         else if(changesSaved != true){
             //Checks to see if changes were saved.
             throw new RuntimeException("Please save changes before logging out.");
-            //System.out.println("Please save changes before logging out.");
             }
         else{
-            //If everything is good simply sets loggedIn to false and prints logged out message
+            //If everything is good simply sets loggedIn to false and throws logged out message
             loggedIn = false;
             throw new RuntimeException("You are logged out.");
-            //System.out.println("You are logged out.");
         }
         
     }

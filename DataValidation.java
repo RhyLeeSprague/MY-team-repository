@@ -63,18 +63,15 @@ public class DataValidation {
         }
         else if(saved){
             throw new RuntimeException("File is already saved.");
-            //System.out.println("File is already saved.");
         }
         else if(!employee.loggedIn()){
             throw new RuntimeException("You must be logged in before you can make/save changes.");
-            //System.out.println("You must be logged in before you can make/save changes.");
         }
     }
     public void accessCheck(accessLevel){
         //Checks the employee's access level when trying to click something that requires higher clearance
         if(accessLevel != 'a'){
             throw new RuntimeException("You do not have the access level required to do this action.");
-            //System.out.println("You do not have the access level required to do this action.");
         }
         else{
         }
