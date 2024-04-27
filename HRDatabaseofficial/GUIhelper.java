@@ -35,7 +35,6 @@ public class GUIhelper {
         return newArray;
     } 
 
-
     public Demographics returnObject(String name, ArrayList<Demographics> list)
     {
         for(int i=0; i<list.size(); i++)

@@ -1,15 +1,15 @@
 package HRDatabaseofficial;
-
+import java.util.ArrayList;
 public class test {
     public static void main(String[] args)
     {
-        Demographics person = new Demographics();
         GUI obj = new GUI();
+        login start = new login();
+        ListMaker lm = new ListMaker();
+        Demographics demo = new Demographics();
 
-        person.makeAPerson();
-        GUIhelper gui = new GUIhelper();
         obj.frame();
-    }
 
-    public test(){}
+        //start.loginScreen();
+    }
 }

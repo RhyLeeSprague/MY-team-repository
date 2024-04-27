@@ -1,44 +1,58 @@
 package HRDatabaseofficial;
 
-import javax.swing.Action;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import javax.swing.JComboBox;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.JList;
+import javax.swing.DefaultListSelectionModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 public class GUI extends JFrame
 {
+    
+    public ArrayList<Demographics> userList;
+
     public void frame() 
     {
         SwingUtilities.invokeLater(() -> 
         {
-            Demographics person = new Demographics();
+            //objects
             demographicsPanel demo = new demographicsPanel();
+            ListMaker lm = new ListMaker();
             GUIhelper gui = new GUIhelper();
             login find = new login();
-                    
+            
+            //makes the list
+            userList = lm.makeAList();
 
+            //Creates the frame
             JFrame frame = new JFrame("HRDatabase"); //frame
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(1000, 500);
-            frame.setLayout(getLayout());
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setSize(1000, 500);
+                frame.setLayout(new BorderLayout(10,10));
 
-            JPanel userPanel = new JPanel();{ //panel in frame
+            JPanel userPanel = new JPanel();
+            { //panel in frame
+                userPanel.setLayout(new FlowLayout());
                 userPanel.setPreferredSize(getPreferredSize()); //auto sets size
 
                 // WELCOME "THEIR NAME"
-                JLabel customName = new JLabel("Welcome ");
+                JLabel customName = new JLabel("Welcome Joe Schmoe!"); 
+                //perhaps find a way to make the login name dynamic??
                 userPanel.add(customName);
-
-                // clock in and out button
                 
+                //Log Out Button
                 JButton logOutButton = new JButton("Log Out");
+                logOutButton.setFocusable(false); //makes button prettier so cant focus on text
+                logOutButton.setFont(new Font("Times New Roman", Font.BOLD, 18)); //sets font for Label
 
                 logOutButton.addActionListener(new ActionListener() 
                 {
@@ -50,30 +64,63 @@ public class GUI extends JFrame
                 });
                 userPanel.add(logOutButton);
 
-                JLabel label = new JLabel("User List:");
+                //User List Label
+               JLabel label = new JLabel("User List:");
                 label.setBounds(getBounds()); //auto sets bounds
                 label.setBackground(Color.CYAN); //blue :)
                 label.setOpaque(true); //makes sure you can see the color
-                userPanel.add(label); //adds it
+               userPanel.add(label); //adds it
 
-               String[] info = gui.convertObjectArray(person.getList()); //temp to a temp
+               //converts list to a String array
+               String[] info = gui.convertObjectArray(userList); //converts to something we can use
 
-               JComboBox<String> users = new JComboBox<>(info); //drop down box
-               userPanel.add(users, BorderLayout.CENTER); //adds dropdown box to panel and center
+                // New List
+                DefaultListModel listModel = new DefaultListModel();
 
-                users.addActionListener(new ActionListener() 
+                for(int i=0; i<info.length; i++)
                 {
-                            public void actionPerformed(ActionEvent e)
-                            {
-                            String selected = (String) users.getSelectedItem(); //get the selected item
-                            Demographics obj = gui.returnObject(selected, person.getList()); //finds the object it's at
-                            demo.frame(obj); //calls the demo frame
-                            }
-                });
-            }
+                    listModel.addElement(info[i]);
+                }
 
+               JList users = new JList(listModel);
+                users.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION); //you can only select one person at a time
+                users.setLayoutOrientation(JList.VERTICAL); //vertical list
+                users.setVisibleRowCount(10); 
+
+                users.addListSelectionListener(new ListSelectionListener() {
+                    @Override
+                    public void valueChanged(ListSelectionEvent e)
+                    {
+                            String val = (String) users.getSelectedValue();
+                            Demographics person = gui.returnObject(val, userList);
+                            demo.demoFrame(person);
+                    }
+                });
+                userPanel.add(users, BorderLayout.CENTER); //adds list to panel and center
+
+                //Add User Button
+                JButton addButton = new JButton("Add User");
+                addButton.setFocusable(false); //makes button prettier so cant focus on text
+                addButton.setFont(new Font("Times New Roman", Font.BOLD, 18)); //sets font for Label
+
+                addButton.addActionListener(new ActionListener() 
+                {  @Override
+                public void actionPerformed(ActionEvent e) 
+                { 
+                    Demographics newEmployee = new Demographics();
+                    ArrayList<Demographics> tempList = demo.addFrame(newEmployee, userList); //opens add user screen
+                    lm.setList(tempList);
+                    String[] info = gui.convertObjectArray(tempList);
+
+                    listModel.addElement(info);
+                }
+                });
+                userPanel.add(addButton);
+            }
+            
             frame.getContentPane().add(userPanel); //adds panel
             frame.setVisible(true);
+
         });
     }
-}   
+}
