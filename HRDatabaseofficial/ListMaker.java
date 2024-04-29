@@ -5,20 +5,18 @@ import java.util.ArrayList;
 public class ListMaker {
     public ArrayList<Demographics> userList;
 
-    ListMaker(){}
+    ListMaker() {
+    }
 
-    public void setList(ArrayList<Demographics> list)
-    {
+    public void setList(ArrayList<Demographics> list) {
         userList = list;
     }
 
-    public ArrayList<Demographics> getList()
-    {
+    public ArrayList<Demographics> getList() {
         return userList;
     }
 
-    public ArrayList<Demographics> makeAList() 
-    {
+    public ArrayList<Demographics> makeAList() {
         ArrayList<Demographics> employeeList = new ArrayList<>();
 
         Demographics person1 = new Demographics();
@@ -51,30 +49,9 @@ public class ListMaker {
         person1.setSkills(skill1);
         person1.setEvaluations(eval1);
 
-        employeeList.add(person1);  // stores instance of demographics to arraylist employeelist
+        employeeList.add(person1); // stores instance of demographics to arraylist employeelist
 
         setList(employeeList);
         return employeeList;
     }
 }
-
-/*
- 
- * 
- * This code below creates an instance of Skills and attaches it to whatever
- * instance of Demographics is passed
- * The individual variables will need to be changed to whatever user input is
- * 
- * private static void attachNewSkills(Demographics person) {
- * // Create a new instance of Skills
- * Skills newSkills = new Skills();
- * newSkills.criticalSkills = new String[]{"Java", "Python"};
- * newSkills.criticalSkillLevel = new String[]{"Intermediate", "Advanced"};
- * newSkills.softSkills = new String[]{"Communication", "Teamwork"};
- * newSkills.giftsTalents = new String[]{"Problem-solving", "Creativity"};
- * 
- * // Set the new instance of Skills to the provided Demographics object
- * person.setSkills(newSkills);
- * }
- 
- */
