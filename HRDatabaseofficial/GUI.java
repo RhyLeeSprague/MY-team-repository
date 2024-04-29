@@ -18,15 +18,16 @@ import javax.swing.DefaultListModel;
 public class GUI extends JFrame {
 
     public ArrayList<Demographics> userList;
+    static DefaultListModel listModel = new DefaultListModel();
+    static JList users = new JList(listModel);
+
+    demographicsPanel demo = new demographicsPanel();
+    ListMaker lm = new ListMaker();
+    static GUIhelper gui = new GUIhelper();
+    login find = new login();
 
     public void frame() {
         SwingUtilities.invokeLater(() -> {
-            // objects
-            demographicsPanel demo = new demographicsPanel();
-            ListMaker lm = new ListMaker();
-            GUIhelper gui = new GUIhelper();
-            login find = new login();
-
             // makes the list
             userList = lm.makeAList();
 
@@ -66,17 +67,8 @@ public class GUI extends JFrame {
                 label.setOpaque(true); // makes sure you can see the color
                 userPanel.add(label); // adds it
 
-                // converts list to a String array
-                String[] info = gui.getNames(userList); // converts to something we can use
+                updateListModel(userList);
 
-                // New List
-                DefaultListModel listModel = new DefaultListModel();
-
-                for (int i = 0; i < info.length; i++) {
-                    listModel.addElement(info[i]);
-                }
-
-                JList users = new JList(listModel);
                 users.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION); // you can only select one person at
                                                                                     // a time
                 users.setLayoutOrientation(JList.VERTICAL); // vertical list
@@ -100,19 +92,29 @@ public class GUI extends JFrame {
                 addButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        ArrayList<Demographics> tempList = demo.addFrame(userList); // opens add user screen
-                        lm.setList(tempList);
-                        String[] info = gui.convertObjectArray(tempList);
-
-                        listModel.addElement(info[2]);
+                        demo.addFrame(userList); // opens add user screen
+                        // lm.setList(tempList);
+                        // String[] info = gui.getNames(userList);
+                        // System.out.println(info.length);
+                        // for (String data : info) {
+                        // System.out.println(data);
+                        // }
                     }
                 });
                 userPanel.add(addButton);
             }
-
             frame.getContentPane().add(userPanel); // adds panel
             frame.setVisible(true);
-
         });
+
     }
+
+    public static void updateListModel(ArrayList<Demographics> userList) {
+        String[] info = gui.getNames(userList);
+        listModel.clear();
+        for (int i = 0; i < info.length; i++) {
+            listModel.addElement(info[i]);
+        }
+    }
+
 }
