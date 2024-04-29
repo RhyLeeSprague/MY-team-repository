@@ -104,7 +104,6 @@ public class GUIhelper {
             }
 
             finalList[i] = demographicInfoBuilder.toString();
-            System.out.println(finalList[i]);
         }
         return finalList;
     }

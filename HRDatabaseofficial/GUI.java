@@ -93,18 +93,13 @@ public class GUI extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         demo.addFrame(userList); // opens add user screen
-                        // lm.setList(tempList);
-                        // String[] info = gui.getNames(userList);
-                        // System.out.println(info.length);
-                        // for (String data : info) {
-                        // System.out.println(data);
-                        // }
                     }
                 });
                 userPanel.add(addButton);
             }
             frame.getContentPane().add(userPanel); // adds panel
             frame.setVisible(true);
+
         });
 
     }
