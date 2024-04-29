@@ -67,7 +67,7 @@ public class GUI extends JFrame {
                 userPanel.add(label); // adds it
 
                 // converts list to a String array
-                String[] info = gui.convertObjectArray(userList); // converts to something we can use
+                String[] info = gui.getNames(userList); // converts to something we can use
 
                 // New List
                 DefaultListModel listModel = new DefaultListModel();
@@ -104,7 +104,7 @@ public class GUI extends JFrame {
                         lm.setList(tempList);
                         String[] info = gui.convertObjectArray(tempList);
 
-                        listModel.addElement(info);
+                        listModel.addElement(info[2]);
                     }
                 });
                 userPanel.add(addButton);

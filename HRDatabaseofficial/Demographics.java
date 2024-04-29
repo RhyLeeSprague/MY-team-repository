@@ -1,7 +1,5 @@
 package HRDatabaseofficial;
 
-import java.util.Arrays;
-
 public class Demographics {
     String firstAndLastName;
     String emailAddress;
@@ -92,13 +90,11 @@ public class Demographics {
         return this.evaluations;
     }
 
-    public void setPassword(String pass)
-    {
+    public void setPassword(String pass) {
         this.password = pass;
     }
 
-    public String getPassword()
-    {
+    public String getPassword() {
         return this.password;
     }
 
@@ -110,6 +106,51 @@ class jobHistory {
     String[] teammates;
     String lengthOfJob;
     String[] teamRoles;
+
+    // Getter and setter methods for companyName
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    // Getter and setter methods for supervisor
+    public String getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(String supervisor) {
+        this.supervisor = supervisor;
+    }
+
+    // Getter and setter methods for teammates
+    public String[] getTeammates() {
+        return teammates;
+    }
+
+    public void setTeammates(String[] teammates) {
+        this.teammates = teammates;
+    }
+
+    // Getter and setter methods for lengthOfJob
+    public String getLengthOfJob() {
+        return lengthOfJob;
+    }
+
+    public void setLengthOfJob(String lengthOfJob) {
+        this.lengthOfJob = lengthOfJob;
+    }
+
+    // Getter and setter methods for teamRoles
+    public String[] getTeamRoles() {
+        return teamRoles;
+    }
+
+    public void setTeamRoles(String[] teamRoles) {
+        this.teamRoles = teamRoles;
+    }
 }
 
 class Skills {
@@ -117,6 +158,42 @@ class Skills {
     String[] criticalSkillLevel;
     String[] softSkills;
     String[] giftsTalents;
+
+    // Getter and setter methods for criticalSkills
+    public String[] getCriticalSkills() {
+        return criticalSkills;
+    }
+
+    public void setCriticalSkills(String[] criticalSkills) {
+        this.criticalSkills = criticalSkills;
+    }
+
+    // Getter and setter methods for criticalSkillLevel
+    public String[] getCriticalSkillLevel() {
+        return criticalSkillLevel;
+    }
+
+    public void setCriticalSkillLevel(String[] criticalSkillLevel) {
+        this.criticalSkillLevel = criticalSkillLevel;
+    }
+
+    // Getter and setter methods for softSkills
+    public String[] getSoftSkills() {
+        return softSkills;
+    }
+
+    public void setSoftSkills(String[] softSkills) {
+        this.softSkills = softSkills;
+    }
+
+    // Getter and setter methods for giftsTalents
+    public String[] getGiftsTalents() {
+        return giftsTalents;
+    }
+
+    public void setGiftsTalents(String[] giftsTalents) {
+        this.giftsTalents = giftsTalents;
+    }
 }
 
 class Evaluations {
@@ -124,4 +201,40 @@ class Evaluations {
     String dateOfEval;
     String[] employeeSatisfaction;
     String[] extraNotes;
+
+    // Getter and setter methods for evalSupervisor
+    public String getEvalSupervisor() {
+        return evalSupervisor;
+    }
+
+    public void setEvalSupervisor(String evalSupervisor) {
+        this.evalSupervisor = evalSupervisor;
+    }
+
+    // Getter and setter methods for dateOfEval
+    public String getDateOfEval() {
+        return dateOfEval;
+    }
+
+    public void setDateOfEval(String dateOfEval) {
+        this.dateOfEval = dateOfEval;
+    }
+
+    // Getter and setter methods for employeeSatisfaction
+    public String[] getEmployeeSatisfaction() {
+        return employeeSatisfaction;
+    }
+
+    public void setEmployeeSatisfaction(String[] employeeSatisfaction) {
+        this.employeeSatisfaction = employeeSatisfaction;
+    }
+
+    // Getter and setter methods for extraNotes
+    public String[] getExtraNotes() {
+        return extraNotes;
+    }
+
+    public void setExtraNotes(String[] extraNotes) {
+        this.extraNotes = extraNotes;
+    }
 }
