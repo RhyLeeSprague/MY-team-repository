@@ -77,9 +77,8 @@ public class GUI extends JFrame {
                 users.addListSelectionListener(new ListSelectionListener() {
                     @Override
                     public void valueChanged(ListSelectionEvent e) {
-                        String val = (String) users.getSelectedValue();
-                        Demographics person = gui.returnObject(val, userList);
-                        demo.demoFrame(person);
+                        String val = (String) users.getSelectedValue(); 
+                        demo.demoFrame(val, userList);
                     }
                 });
                 userPanel.add(users, BorderLayout.CENTER); // adds list to panel and center

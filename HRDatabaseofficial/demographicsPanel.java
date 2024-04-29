@@ -9,7 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.StyledDocument;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.event.FocusEvent;
@@ -18,11 +21,28 @@ import java.util.ArrayList;
 
 public class demographicsPanel {
 
-    public void demoFrame(Demographics obj) {
+    public void demoFrame(String val, ArrayList<Demographics> userList) {
         JFrame dFrame = new JFrame("HRDatabase"); // frame
         dFrame.setSize(1000, 500);
         dFrame.setLayout(new BorderLayout(10, 10));
 
+        GUIhelper helper = new GUIhelper();
+        String[] array = helper.convertObjectArray(userList);
+        int i = helper.getIndexOfName(userList, val);
+
+
+
+        JTextPane pane = new JTextPane();
+        StyledDocument doc = pane.getStyledDocument();
+
+        for (String info : array) {
+            try {
+                doc.insertString(doc.getLength(), info + "\n", null); // Add the line to the document
+            } catch (BadLocationException e) {
+                e.printStackTrace();
+            }
+        }
+        dFrame.add(pane);
         dFrame.setVisible(true);
     }
 

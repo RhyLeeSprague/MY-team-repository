@@ -108,7 +108,8 @@ public class GUIhelper {
         return finalList;
     }
 
-    public String[] getNames(ArrayList<Demographics> list) {
+    public String[] getNames(ArrayList<Demographics> list) 
+    {
         String[] finalList = new String[list.size()];
         for (int i = 0; i < list.size(); i++) {
             Demographics iterator = list.get(i); // finds object at the specified index
@@ -116,6 +117,19 @@ public class GUIhelper {
             finalList[i] = name;
         }
         return finalList;
+    }
+
+    public int getIndexOfName(ArrayList<Demographics> list, String val)
+    {
+         
+        for(int i=0; i<list.size(); i++)
+        {
+            Demographics iterator = list.get(i); // finds object at the specified index
+
+            if(iterator.getFirstAndLastName() == val)
+                return i;
+        }
+        return -1;
     }
 
     public String[] addTo(String name, String[] list) // appends a variable to a String[]
