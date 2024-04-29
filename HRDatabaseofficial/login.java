@@ -18,6 +18,8 @@ public class login extends JFrame
 {
     public boolean loginScreen()
     {
+        Person people = new Person();
+        Demographics person1 = new Demographics();
         GUI find = new GUI();
         SwingUtilities.invokeLater(() ->
         {
@@ -54,16 +56,13 @@ public class login extends JFrame
                 {
                     public void actionPerformed(ActionEvent e)
                     {
-                        //validate email
-                        //validate password
+                        //Needs the proper call for the arrayList found in either GUI 
+                        //or Demographcis than good to go
+                        //people.logIn(person1.getEmailAddress(), person1.getPassword(), find.userList());
                         Lframe.dispose();
                         find.frame();
                     }
                 });
-            
-        //check user and password match
-        //do all that stuff
-        //if all works out, then return true and we are good to run the GUI application
         }
 
         Lframe.add(panel);
