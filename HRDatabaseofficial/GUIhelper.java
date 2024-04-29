@@ -1,14 +1,6 @@
 package HRDatabaseofficial;
 
-// import javax.swing.JFrame;
-// import javax.swing.JPanel;
-// import javax.swing.SwingUtilities;
-// import java.awt.*;
-// import java.util.*;
-// import java.awt.event.ActionEvent;
-// import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class GUIhelper {
 
@@ -112,7 +104,6 @@ public class GUIhelper {
             }
 
             finalList[i] = demographicInfoBuilder.toString();
-            System.out.println(finalList[i]);
         }
         return finalList;
     }
@@ -120,7 +111,6 @@ public class GUIhelper {
     public String[] getNames(ArrayList<Demographics> list) {
         String[] finalList = new String[list.size()];
         for (int i = 0; i < list.size(); i++) {
-            // made a temp object OF THE TARGET CLASS THAT CONTAINS THE ORIGINAL STRING
             Demographics iterator = list.get(i); // finds object at the specified index
             String name = iterator.getFirstAndLastName(); // loops through object and returns name;
             finalList[i] = name;
