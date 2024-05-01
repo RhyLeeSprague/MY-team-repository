@@ -1,15 +1,9 @@
 package HRDatabaseofficial;
-import java.util.ArrayList;
+
 public class test {
-    public static void main(String[] args)
-    {
-        GUI obj = new GUI();
+    public static void main(String[] args) {
         login start = new login();
-        ListMaker lm = new ListMaker();
-        Demographics demo = new Demographics();
 
-        obj.frame();
-
-        //start.loginScreen();
+        start.loginScreen();
     }
 }

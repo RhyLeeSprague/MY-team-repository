@@ -9,22 +9,44 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.StyledDocument;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
 
 public class demographicsPanel {
-    public void demoFrame(Demographics obj) {
+
+    public void demoFrame(String val, ArrayList<Demographics> userList) {
         JFrame dFrame = new JFrame("HRDatabase"); // frame
         dFrame.setSize(1000, 500);
         dFrame.setLayout(new BorderLayout(10, 10));
 
+        GUIhelper helper = new GUIhelper();
+        String[] array = helper.convertObjectArray(userList);
+        int i = helper.getIndexOfName(userList, val);
+
+
+
+        JTextPane pane = new JTextPane();
+        StyledDocument doc = pane.getStyledDocument();
+
+        for (String info : array) {
+            try {
+                doc.insertString(doc.getLength(), info + "\n", null); // Add the line to the document
+            } catch (BadLocationException e) {
+                e.printStackTrace();
+            }
+        }
+        dFrame.add(pane);
         dFrame.setVisible(true);
     }
 
-    public ArrayList<Demographics> addFrame(ArrayList<Demographics> userList) {
+    public void addFrame(ArrayList<Demographics> userList) {
         JFrame aFrame = new JFrame("HRDatabase"); // frame
         aFrame.setSize(1000, 500);
         aFrame.setLayout(new BorderLayout(10, 10));
@@ -49,7 +71,8 @@ public class demographicsPanel {
 
                 Input inputs = new Input();
 
-                String[] todo = new String[] { "Name", "Email", "Address", "Emergency Contact", "Emergency Contact #" };
+                String[] todo = new String[] { "Full Name", "Email", "Address", "Emergency Contact",
+                        "Emergency Contact #" };
                 for (String s : todo) {
                     JLabel label = new JLabel(s);
                     aPanel.add(label);
@@ -57,10 +80,15 @@ public class demographicsPanel {
                     JTextField textField = new JTextField(10);
                     aPanel.add(textField);
 
-                    textField.addActionListener(new ActionListener() {
+                    textField.addFocusListener(new FocusListener() {// used focus event instead of action event so enter
+                                                                    // doesn't have to be pressed every time
                         @Override
+                        public void focusGained(FocusEvent e) {
 
-                        public void actionPerformed(ActionEvent e) {
+                        }
+
+                        @Override
+                        public void focusLost(FocusEvent e) {
                             String input = textField.getText();
                             switch (s) {
                                 case ("Full Name"):
@@ -190,15 +218,14 @@ public class demographicsPanel {
                         newEntry.setJobHistory(newJobHistory);
 
                         userList.add(newEntry);
+                        GUI.updateListModel(userList);
                         aFrame.dispose();
                     }
                 });
                 aPanel.add(commit);
-
                 aFrame.setVisible(true);
             }
             aFrame.getContentPane().add(aPanel); // adds panel
         });
-        return userList;
     }
 }
